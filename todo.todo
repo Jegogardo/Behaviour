@@ -1,0 +1,11 @@
+Hub:
+    ✔ clean parameters @today @done
+    ☐ upload progress event @low 
+    ☐ manage paramaters and callbacks inside two different object as arguments 
+    ☐ __proto__ issue @low 
+
+Router:
+    ☐ add event dispatcher ( onPageLoad ('in progress'), onPageLoadStart, onPageLoadEnd,
+                                onBackPage, onForwardPage )
+    ☐ static element through all pages 
+    ☐ define interations between Router and Page classes @high 
