@@ -1,0 +1,11 @@
+# Hub
++ clean parameters{{"_file":"D:/Programmi/xampp/htdocs/Behaviour/Hub/hub.js"}}
+- upload progress event{{"_file":"D:/Programmi/xampp/htdocs/Behaviour/Hub/hub.js"}}
+- manage paramaters and callbacks inside two different object as arguments {{"_file":"D:/Programmi/xampp/htdocs/Behaviour/Hub/hub.js"}}
+- __proto__ issue{{"_file":"D:/Programmi/xampp/htdocs/Behaviour/Hub/hub.js"}}
+
+# Router
+- add event dispatcher ( onPageLoad ('in progress'), onPageLoadStart, onPageLoadEnd, onBackPage, onForwardPage ){{"_file":"D:/Programmi/xampp/htdocs/Behaviour/Router/router.js"}}
+- static element through all pages {{"_file":"D:/Programmi/xampp/htdocs/Behaviour/Router/router.js"}}
+- define interations between Router and Page classes {{"_file":"D:/Programmi/xampp/htdocs/Behaviour/Router/router.js"}}
+
