@@ -80,3 +80,71 @@ function newEl(node, toWrite) {
     return el;
 }
 
+if(!( "endsWith" in String.prototype ) ){
+
+    String.prototype.endsWith = function( wd ){
+
+        var lengthStr = this.length;
+        var lengthWd = wd.length;
+        if( lengthWd > lengthStr ){
+            return false
+        }
+        else
+            if( this.substring( 0, lengthWd ) == wd )
+                return true
+                else
+                    return false
+                    }
+
+    }
+
+if(!( "startsWith" in String.prototype ) ){
+        String.prototype.startsWith = function( wd ){
+
+        var lengthStr = this.length;
+        var lengthWd = wd.length;
+        if( lengthWd > lengthStr ){
+            return false
+        }
+        else
+            if( this.substring( lengthStr - lengthWd ) == wd )
+                return true
+                else
+                    return false
+                    }
+
+    }
+
+(function () {
+    const DEBUG = false
+    var oldLog = console.log;
+    if (DEBUG)
+        console.log = function (message) {
+            // DO MESSAGE HERE.
+            document.body.innerHTML += message + "<br>"
+        };
+})();
+
+
+//Polyfill Object.assign
+if (typeof Object.assign != 'function') {
+  Object.assign = function(target) {
+    'use strict';
+    if (target == null) {
+      throw new TypeError('Cannot convert undefined or null to object');
+    }
+
+    target = Object(target);
+    for (var index = 1; index < arguments.length; index++) {
+      var source = arguments[index];
+      if (source != null) {
+        for (var key in source) {
+          if (Object.prototype.hasOwnProperty.call(source, key)) {
+            target[key] = source[key];
+          }
+        }
+      }
+    }
+    return target;
+  };
+}
