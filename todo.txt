@@ -6,7 +6,8 @@
 - prova2
 
 # Router
-- add event dispatcher ( onPageLoading ('in progress'), onPageLoadStart, onPageLoadEnd, onBackPage, onForwardPage ){{"_file":"D:/Programmi/xampp/htdocs/Behaviour/Router/router.js"}}
++ add event dispatcher ( onPageLoading ('in progress'), onPageLoadStart, onPageLoadEnd, onBackPage, onForwardPage ){{"_file":"D:/Programmi/xampp/htdocs/Behaviour/Router/router.js"}}
 - static element through all pages {{"_file":"D:/Programmi/xampp/htdocs/Behaviour/Router/router.js"}}
 - define interations between Router and Page classes {{"_file":"D:/Programmi/xampp/htdocs/Behaviour/Router/router.js"}}
+- miss onPageLoading ('in progress')
 
