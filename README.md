@@ -2,7 +2,9 @@
 
 Behaviour is a library that integrate some stupid but useful functionalities.
 
-It has some polyfills such as:
+It has :
+	
+	"Some polyfills" (see https://github.com/Edoardohorse/Polyfills)
 
 	- startsWith and endsWith: declared into String.prototype, they are such clever methods and
 								now those coulbe be used in any browser you want (IE 9+ included);
