@@ -40,26 +40,6 @@ class Bhv {
 //}
 
 
-
-
-//if( NEWEL_ENABLE ){
-
-/*
- * Example usage newEl
- * el:"div",
- * id:"theid",
- * theclass:"box expanded",
- * data:{
-    "data-init": "prova",
-    "href": provava"
-    Object.prova = function(){
-    *  }
-    debugger;
-    }
-
- * !!! Respect the uppercase of attributes such as viewBox and not viewbox !!!
- */
-
 function newEl(node, toWrite) {
     // Crea Html element per comodità
     if( typeof node == "string"){
@@ -73,6 +53,20 @@ function newEl(node, toWrite) {
             var theclass = string[2].split(" ");
             for (var i in theclass)
                 classie.add(el, theclass[i]);
+        }
+        if ( string[3] != undefined) {
+            string[3].indexOf(" ") == 0 ? string[3] = string[3].substr(1) : false;
+            var dataset = string[3].split(" ");
+            for (var i in dataset) {
+                var s = dataset[i].split("=")
+                var attr = document.createAttribute(s[0]);
+                // Don't use setAttribute( string, string) cause
+                // doesn't respect the uppercase
+                if(s[1])
+                    attr.value = s[1]
+                el.setAttributeNode(attr);
+            }
+                
         }
     }
 
@@ -98,7 +92,8 @@ function newEl(node, toWrite) {
                     var attr = document.createAttribute(i);
                     // Don't use setAttribute( string, string) cause
                     // doesn't respect the uppercase
-                    attr.value = node.data[i];
+                    if(node.data[i])
+                        attr.value = node.data[i];
                     el.setAttributeNode(attr);
                 }
             }
@@ -108,10 +103,77 @@ function newEl(node, toWrite) {
     }
     if( typeof toWrite != "undefined" )
         toWrite.appendChild( el );
+        
+
+    /*
+        Permette di chiamare i setter degli HTMLElement
+        Es.: newEl('div').call('textContent','testo di esempio')
+    */
+    el.call = function(prop,value){
+        prop in el? (el[prop] = value): console.log('Key not defined')
+        return el
+    }
+
+    /*
+        Permette di inserire un HTMLElement più elementi in un volta.
+        È usato insieme al repeatEl
+        Es.:
+        newEl('div,,photo')
+            .appendChildren(repeatEl('img',3,
+                {
+                    src:[
+                        "uploads/IMG_20180607_185856.jpg",
+                        "uploads/IMG_20180611_135255.jpg",
+                        "uploads/prova1.jpg"
+                    ]
+                }
+            )),
+    */
+    el.appendChildren = function(array){
+        array.forEach(element => {
+            this.appendChild(element)    
+        });
+
+        return el
+    }
+
     return el;
 }
 
-//}
+
+
+/*
+    Permette di ripete la funzione newEl per n volte
+    rispettando i data-set. Restituisce un array ricavato
+    da una HTMLCollection (Array.from())
+    
+    repeatEl('a',2, {"data-init": ["prova","prova2"], "href": ["link1","link2"]})
+    ↓       ↓           ↓
+    [
+        <a data-init="prova" href="link1"></a>,
+        <a data-init="prova2" href="link2"></a>
+    ]
+*/
+function repeatEl(el, n, data = null, toWrite = undefined){
+    if(data){
+        var props = Object.keys(data)
+    }
+    let d = document.createElement('div')
+    for(let i=0;i<n; i++){
+        let attrs = {}
+        if(props){
+            for(c=0;c<props.length;c++){
+                let key = props[c]
+                attrs[key] = data[key][i]
+            }
+        }
+
+        let e = newEl({el:el, data: attrs}, toWrite)
+
+        d.appendChild(e)
+    }
+    return [].slice.call(d.children)
+}
 
 //if(POLYFILL_ENDSWITH_ENABLE){
 if(!( "endsWith" in String.prototype ) ){
