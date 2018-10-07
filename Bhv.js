@@ -40,7 +40,23 @@ class Bhv {
 //}
 
 
-function newEl(node, toWrite) {
+//if( NEWEL_ENABLE ){
+
+/*
+ * Example usage newEl
+ * el:"div",
+ * id:"theid",
+ * theclass:"box expanded",
+ * data:{
+    "data-init": "prova",
+    "href": provava"
+    Object.prova = function(){
+    *  }
+    debugger;
+    }
+
+ * !!! Respect the uppercase of attributes such as viewBox and not viewbox !!!
+ */function newEl(node, toWrite) {
     // Crea Html element per comodità
     if( typeof node == "string"){
         var string = node.split(",");
